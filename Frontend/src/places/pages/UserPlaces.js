@@ -1,6 +1,6 @@
 import React from "react";
 
-
+import {useParams} from 'react-router-dom';
 import PlaceList from "../components/PlaceList";
 const PLACES=[
     {id:'p1',title:'Taj Mahal', description:'Seventh Wonder of The World', imgUrl:'https://lh5.googleusercontent.com/p/AF1QipNjQ5SJFQ43S6nQHYkSflVjCaHqQGQdS8eEIL1f=w408-h277-k-no',address :'Agra',
@@ -15,8 +15,11 @@ const PLACES=[
     creator:'u2'}
 ];
 const UserPlaces=()=>{
+    const userId=useParams().userId;
+    const loadedPlaces=PLACES.filter(place=>place.creator===userId);
     return(
-        <PlaceList items={PLACES}/>
+        
+        <PlaceList items={loadedPlaces}/>
         // <h1>Working</h1>
     );  
 };
